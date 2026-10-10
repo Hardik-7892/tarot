@@ -1,0 +1,68 @@
+.glo {
+  position: relative;
+  text-decoration: underline dotted var(--gold) 1.5px;
+  text-underline-offset: 3px;
+  cursor: help;
+  white-space: nowrap;
+}
+
+.glo:hover,
+.glo:focus-visible,
+.glo:focus {
+  color: var(--gold-bright);
+}
+
+.tip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  width: max-content;
+  max-width: 240px;
+  transform: translateX(-50%) translateY(4px);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 10px;
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  background: linear-gradient(170deg, var(--abyss-2), var(--abyss));
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 18px rgba(212, 175, 55, 0.15);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  font-style: normal;
+  white-space: normal;
+  text-align: left;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+}
+
+.tip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 7px solid transparent;
+  border-top-color: rgba(212, 175, 55, 0.55);
+}
+
+.glo:hover .tip,
+.glo:focus-visible .tip,
+.glo:focus .tip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.meaning {
+  color: var(--parchment);
+}
+
+.syns {
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
