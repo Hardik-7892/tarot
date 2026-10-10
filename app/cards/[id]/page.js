@@ -2,7 +2,6 @@ import Link from "next/link";
 import { CARDS, byId } from "../../../lib/cards";
 import TarotCard from "../../../components/TarotCard";
 import Gloss from "../../../components/Gloss";
-import styles from "./detail.module.css";
 
 export function generateStaticParams() {
   return CARDS.map((c) => ({ id: c.id }));
@@ -24,10 +23,12 @@ export default async function CardDetail({ params }) {
 
   if (!card) {
     return (
-      <div className={styles.wrap}>
-        <h1>Card Not Found</h1>
-        <p>This card slipped back into the deck.</p>
-        <Link href="/cards">Return to the Deck →</Link>
+      <div className="mx-auto max-w-[860px] px-6 py-10">
+        <h1 className="font-display text-4xl text-parchment">Card Not Found</h1>
+        <p className="mt-4 leading-relaxed">This card slipped back into the deck.</p>
+        <Link href="/cards" className="font-semibold text-moon hover:text-goldbright">
+          Return to the Deck →
+        </Link>
       </div>
     );
   }
@@ -37,78 +38,104 @@ export default async function CardDetail({ params }) {
   const next = CARDS[(idx + 1) % CARDS.length];
 
   return (
-    <div className={styles.wrap}>
-      <nav aria-label="Breadcrumb" className={styles.crumb}>
-        <Link href="/cards">← All Cards</Link>
+    <div className="mx-auto max-w-[860px] px-6 py-10">
+      <nav aria-label="Breadcrumb" className="mb-6">
+        <Link href="/cards" className="font-semibold text-moon hover:text-goldbright">
+          ← All Cards
+        </Link>
       </nav>
 
-      <header className={styles.head}>
-        <h1 className={styles.title}>{card.name}</h1>
-        <p className={styles.sub}>
+      <header className="mb-8 text-center">
+        <h1 className="mb-2 font-display text-[clamp(2.4rem,6vw,3.6rem)] text-parchment">
+          {card.name}
+        </h1>
+        <p className="mb-4 text-sm uppercase tracking-[0.12em] text-gold">
           {card.arcana === "major"
             ? `Major Arcana · ${roman(card.number)}`
             : `${card.suit[0].toUpperCase() + card.suit.slice(1)} · ${card.element}`}
           {"  ·  "}{card.astrology}
         </p>
-        <div className={styles.keywords} aria-label="Keywords">
+        <div aria-label="Keywords" className="flex flex-wrap justify-center gap-2">
           {card.keywords.map((k) => (
-            <span key={k} className={styles.key}>{k}</span>
+            <span key={k} className="rounded-full border border-gold/40 px-4 py-1 text-sm">
+              {k}
+            </span>
           ))}
         </div>
       </header>
 
-      <div className={styles.hero}>
+      <div className="mb-10 flex flex-col items-center gap-3">
         <TarotCard card={card} startFlipped={true} size="lg" />
-        <p className={styles.flipHint}>Select the card to turn it over. Its <Gloss w="sibylline" /> counsel awaits.</p>
+        <p className="m-0 text-sm italic text-muted">
+          Select the card to turn it over. Its <Gloss w="sibylline" /> counsel awaits.
+        </p>
       </div>
 
-      <p className={styles.essence}>{card.essence}</p>
+      <p className="mx-auto mb-8 max-w-[40rem] text-center font-display text-2xl italic leading-relaxed text-goldbright">
+        {card.essence}
+      </p>
 
-      <div className={styles.meanings}>
-        <article className={styles.meaning}>
-          <h2>Upright</h2>
-          <p>{card.upright}</p>
+      <div className="mb-8 grid gap-5 md:grid-cols-2">
+        <article className="rounded-[14px] border border-gold/25 bg-linear-to-b from-abyss2 to-abyss p-6">
+          <h2 className="mb-3 font-display text-2xl text-goldbright">Upright</h2>
+          <p className="m-0 leading-relaxed">{card.upright}</p>
         </article>
-        <article className={styles.meaning}>
-          <h2>Reversed</h2>
-          <p>{card.reversed}</p>
+        <article className="rounded-[14px] border border-gold/25 bg-linear-to-b from-abyss2 to-abyss p-6">
+          <h2 className="mb-3 font-display text-2xl text-goldbright">Reversed</h2>
+          <p className="m-0 leading-relaxed">{card.reversed}</p>
         </article>
       </div>
 
-      <article className={styles.deep} aria-labelledby="deep-title">
-        <h2 id="deep-title">The Deeper Reading</h2>
-        <p>{card.detail}</p>
+      <article aria-labelledby="deep-title" className="mb-6 rounded-r-[14px] border-l-[3px] border-gold bg-linear-to-b from-abyss2 to-transparent p-7">
+        <h2 id="deep-title" className="mb-3 font-display text-2xl text-goldbright">
+          The Deeper Reading
+        </h2>
+        <p className="m-0 leading-loose">{card.detail}</p>
       </article>
 
-      <div className={styles.twoCol}>
-        <article className={styles.note} aria-labelledby="sym-title">
-          <h2 id="sym-title">Symbolism</h2>
-          <p>{card.symbolism}</p>
+      <div className="mb-8 grid gap-5 md:grid-cols-2">
+        <article aria-labelledby="sym-title" className="rounded-[14px] border border-moon/20 p-6">
+          <h2 id="sym-title" className="mb-3 font-display text-2xl text-goldbright">
+            Symbolism
+          </h2>
+          <p className="m-0 leading-loose">{card.symbolism}</p>
         </article>
-        <article className={styles.note} aria-labelledby="refl-title">
-          <h2 id="refl-title">Sit With This</h2>
-          <p>{card.reflection}</p>
+        <article aria-labelledby="refl-title" className="rounded-[14px] border border-moon/20 p-6">
+          <h2 id="refl-title" className="mb-3 font-display text-2xl text-goldbright">
+            Sit With This
+          </h2>
+          <p className="m-0 leading-loose">{card.reflection}</p>
         </article>
       </div>
 
-      <dl className={styles.facts}>
-        <div>
-          <dt>Element</dt>
-          <dd>{card.element}</dd>
+      <dl className="m-0 mb-10 grid gap-4 rounded-[14px] border border-moon/20 p-5 md:grid-cols-3">
+        <div className="text-center">
+          <dt className="mb-1 text-xs uppercase tracking-[0.25em] text-muted">Element</dt>
+          <dd className="m-0 font-display text-lg text-parchment">{card.element}</dd>
         </div>
-        <div>
-          <dt>Astrology</dt>
-          <dd>{card.astrology}</dd>
+        <div className="text-center">
+          <dt className="mb-1 text-xs uppercase tracking-[0.25em] text-muted">Astrology</dt>
+          <dd className="m-0 font-display text-lg text-parchment">{card.astrology}</dd>
         </div>
-        <div>
-          <dt>Yes / No</dt>
-          <dd>{card.yesNo}</dd>
+        <div className="text-center">
+          <dt className="mb-1 text-xs uppercase tracking-[0.25em] text-muted">Yes / No</dt>
+          <dd className="m-0 font-display text-lg text-parchment">{card.yesNo}</dd>
         </div>
       </dl>
 
-      <nav className={styles.pager} aria-label="More cards">
-        <Link href={`/cards/${prev.id}`}>← {prev.name}</Link>
-        <Link href={`/cards/${next.id}`}>{next.name} →</Link>
+      <nav aria-label="More cards" className="flex flex-wrap justify-between gap-4">
+        <Link
+          href={`/cards/${prev.id}`}
+          className="max-w-[45%] truncate font-semibold text-moon hover:text-goldbright"
+        >
+          ← {prev.name}
+        </Link>
+        <Link
+          href={`/cards/${next.id}`}
+          className="max-w-[45%] truncate text-right font-semibold text-moon hover:text-goldbright"
+        >
+          {next.name} →
+        </Link>
       </nav>
     </div>
   );

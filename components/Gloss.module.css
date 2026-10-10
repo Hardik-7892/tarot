@@ -18,7 +18,7 @@
   left: 50%;
   width: max-content;
   max-width: 240px;
-  transform: translateX(-50%) translateY(4px);
+  transform: translateX(calc(-50% + var(--shift, 0px))) translateY(4px);
   opacity: 0;
   visibility: hidden;
   z-index: 30;
@@ -33,10 +33,24 @@
   font-size: 0.82rem;
   line-height: 1.5;
   font-style: normal;
+  text-transform: none;
+  letter-spacing: normal;
   white-space: normal;
   text-align: left;
   pointer-events: none;
   transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+}
+
+.tip[data-side="below"] {
+  top: calc(100% + 10px);
+  bottom: auto;
+}
+
+.tip[data-side="below"]::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: rgba(212, 175, 55, 0.55);
 }
 
 .tip::after {
@@ -54,7 +68,7 @@
 .glo:focus .tip {
   opacity: 1;
   visibility: visible;
-  transform: translateX(-50%) translateY(0);
+  transform: translateX(calc(-50% + var(--shift, 0px))) translateY(0);
 }
 
 .meaning {

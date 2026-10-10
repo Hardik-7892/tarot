@@ -1,6 +1,5 @@
 import DeckFan from "../../components/DeckFan";
 import Gloss from "../../components/Gloss";
-import styles from "./draw.module.css";
 
 export const metadata = {
   title: "Daily Draw · Tarot",
@@ -9,9 +8,11 @@ export const metadata = {
 
 export default function DailyPage() {
   return (
-    <div className={styles.wrap}>
-      <h1 className={styles.title}>Daily Draw</h1>
-      <p className={styles.lede}>
+    <div className="mx-auto max-w-[960px] px-6 py-12 text-center">
+      <h1 className="mb-3 font-display text-[clamp(2.2rem,5vw,3.2rem)] text-parchment">
+        Daily Draw
+      </h1>
+      <p className="mx-auto mb-10 max-w-[38rem] leading-relaxed text-muted">
         Every visit shuffles anew from the <Gloss w="aleatory" /> deep. Choose
         one card lying facedown. Then turn it over for its upright or reversed counsel.
       </p>

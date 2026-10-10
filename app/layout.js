@@ -29,22 +29,12 @@ export default function RootLayout({ children }) {
         <Starfield />
         <Navbar />
         <main id="main">{children}</main>
-        <footer className="site-footer">
+        <footer className="mt-auto px-6 pb-12 pt-10 text-center text-sm tracking-wide text-muted">
           <p>
             <span translate="no">Tarot</span> · for reflection &amp;
             study. Readings are symbolic, not advice.
           </p>
         </footer>
-        <style>{`
-          .site-footer {
-            margin-top: auto;
-            padding: 2.5rem 1.5rem 3rem;
-            text-align: center;
-            color: var(--muted);
-            font-size: 0.85rem;
-            letter-spacing: 0.04em;
-          }
-        `}</style>
       </body>
     </html>
   );

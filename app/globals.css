@@ -1,4 +1,22 @@
-/* Tarot design tokens. Mystical dark and gold. No Tailwind yet (Phase 2). */
+@import "tailwindcss";
+
+/* Tarot design tokens, exposed both as Tailwind theme and raw CSS vars
+   (modules for the flip / fan / tooltip machinery still use var()). */
+@theme {
+  --color-void: #0a0916;
+  --color-abyss: #151226;
+  --color-abyss2: #1d1832;
+  --color-gold: #d4af37;
+  --color-goldbright: #f1d97b;
+  --color-parchment: #f1e2b8;
+  --color-ink: #ece7d4;
+  --color-muted: #a79fc4;
+  --color-moon: #c9cfe8;
+  --color-arcane: #7c5cbf;
+  --color-blood: #8e2f32;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+}
+
 :root {
   --void: #0a0916;
   --abyss: #151226;
@@ -36,19 +54,10 @@ body {
   padding: 0;
   color: var(--ink);
   background: var(--void);
-  font-family: var(--font-body, system-ui, -apple-system, "Segoe UI", serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25);
   touch-action: manipulation;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-a {
-  color: inherit;
 }
 
 h1,
