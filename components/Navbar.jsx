@@ -5,6 +5,7 @@ const LINKS = [
   { href: "/daily", label: "Daily Draw" },
   { href: "/spread", label: "Threefold Spread" },
   { href: "/yes-no", label: "Yes / No" },
+  { href: "/journal", label: "Journal" },
   { href: "/learn", label: "Learn" },
 ];
 

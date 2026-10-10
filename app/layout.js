@@ -34,6 +34,10 @@ export default function RootLayout({ children }) {
             <span translate="no">Tarot</span> · for reflection &amp;
             study. Readings are symbolic, not advice.
           </p>
+          <p className="mt-2">
+            Journal readings are saved only in this browser — nothing leaves
+            your device.
+          </p>
         </footer>
       </body>
     </html>

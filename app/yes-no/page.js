@@ -18,7 +18,13 @@ export default function YesNoPage() {
         <Gloss w="augury" />. Ask but once: to redraw until pleased is to
         unmake the <Gloss w="sortilege" />.
       </p>
-      <DeckFan pickCount={1} title="Yes-no oracle" verdict={true} />
+      <DeckFan
+        pickCount={1}
+        spreadId="yes-no"
+        title="Yes-no oracle"
+        verdict={true}
+        intentPrompt="Frame a question that thirsts for yes or no, then release it. Shuffle when ready — ask but once."
+      />
     </div>
   );
 }

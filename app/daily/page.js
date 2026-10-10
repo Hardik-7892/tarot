@@ -16,7 +16,12 @@ export default function DailyPage() {
         Every visit shuffles anew from the <Gloss w="aleatory" /> deep. Choose
         one card lying facedown. Then turn it over for its upright or reversed counsel.
       </p>
-      <DeckFan pickCount={1} title="Daily draw" />
+      <DeckFan
+        pickCount={1}
+        spreadId="daily"
+        title="Daily draw"
+        intentPrompt="Pause. What should today be about? Hold it lightly, then shuffle when ready."
+      />
     </div>
   );
 }

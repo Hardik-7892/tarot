@@ -8,7 +8,7 @@
 - Verify each milestone with `npm run lint` + `npm run build` (static export must pass).
 - Do NOT start the next milestone in the same session.
 
-## M1 - Intent-first ritual + generic DeckFan labels [pending]
+## M1 - Intent-first ritual + generic DeckFan labels [done]
 Scope:
 - New `components/IntentStep.jsx`: pause copy ("Pause. Hold one question lightly…"), optional `name` + `question` inputs, Continue/Shuffle CTA. Empty allowed.
 - Refactor `components/DeckFan.jsx` props: `{ pickCount, labels[], spreadId, verdict, initialCards? }`. Remove hardcoded Past/Present/Future `pickLabel()`.
@@ -17,7 +17,7 @@ Scope:
 Accept: fan gated, empty inputs work, reduced-motion safe, lint+build pass.
 Files: components/IntentStep.jsx, components/DeckFan.jsx, app/daily/page.js, app/spread/page.js, app/yes-no/page.js
 
-## M2 - Reading Journal + settings (cap, autosave, privacy) [pending]
+## M2 - Reading Journal + settings (cap, autosave, privacy) [done]
 Scope:
 - `lib/journal.js`: CRUD on `tarot.journal.v1`. Entry `{id, at, spreadId, name?, question?, note?, picks:[{cardId, orientation}]}`.
 - `lib/settings.js` (or fold into journal): `tarot.settings.v1 { autosave: true, cap: 200 }`.
@@ -29,7 +29,7 @@ Scope:
 Accept: reload persists, shared-device works via name filter, export downloads, clear wipes only journal, save-once guard works, lint+build pass.
 Files: lib/journal.js, lib/settings.js, components/JournalPanel.jsx, app/journal/page.js, components/Navbar.jsx, app/layout.js (footer line)
 
-## M3 - Share a reading [pending]
+## M3 - Share a reading [done]
 Depends: M1 (needs labels/picks passthrough).
 Scope:
 - `lib/share.js`: `encodeReading(picks) -> base64url`, `decodeReading()`, `formatReadingText({name, question, spread, picks})`.
@@ -94,3 +94,6 @@ Files: public/manifest.webmanifest, public/icons/*, lib/sound.js, components/Dec
 
 ## Log
 - 2026-10-10: tracker created. Nothing started.
+- 2026-10-10: M1 done. IntentStep.jsx added; DeckFan gated + labels/spreadId/onComplete context; daily/spread/yes-no wired. lint + build pass (87 pages).
+- 2026-10-10: M2 done. lib/journal.js + lib/settings.js (localStorage, cap floor 200); JournalPanel (autosave toggle, save-once, note) in DeckFan reveal; /journal page (search, spread filter, export JSON/TXT/Copy, cap guard modal, 2-step clear); navbar + footer privacy. lint + build pass (88 pages).
+- 2026-10-10: M3 done. lib/share.js (base64url ?r= codec + text formatter); ShareButtons (Copy link/text, native share); DeckFan shared mode (reveal without shuffle, broken-link error, Draw your own, save shared to journal). lint + build pass (88 pages).

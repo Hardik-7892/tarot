@@ -17,7 +17,12 @@ export default function SpreadPage() {
         order: first for the past, second for the present, third for the future, still{" "}
         <Gloss w="quiescent" /> and unformed.
       </p>
-      <DeckFan pickCount={3} title="Three-card spread" />
+      <DeckFan
+        pickCount={3}
+        labels={["Past", "Present", "Future"]}
+        spreadId="past-present-future"
+        title="Three-card spread"
+      />
     </div>
   );
 }
