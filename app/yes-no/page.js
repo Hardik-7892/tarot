@@ -1,5 +1,6 @@
 import DeckFan from "../../components/DeckFan";
 import Gloss from "../../components/Gloss";
+import { getSpread } from "../../lib/spreads";
 
 export const metadata = {
   title: "Yes / No Oracle · Tarot",
@@ -7,6 +8,7 @@ export const metadata = {
 };
 
 export default function YesNoPage() {
+  const spread = getSpread("yes-no");
   return (
     <div className="mx-auto max-w-[960px] px-6 py-12 text-center">
       <h1 className="mb-3 font-display text-[clamp(2.2rem,5vw,3.2rem)] text-parchment">
@@ -19,11 +21,11 @@ export default function YesNoPage() {
         unmake the <Gloss w="sortilege" />.
       </p>
       <DeckFan
-        pickCount={1}
-        spreadId="yes-no"
-        title="Yes-no oracle"
-        verdict={true}
-        intentPrompt="Frame a question that thirsts for yes or no, then release it. Shuffle when ready — ask but once."
+        pickCount={spread.pickCount}
+        spreadId={spread.id}
+        title={spread.title}
+        verdict={spread.verdict}
+        intentPrompt={spread.intentPrompt}
       />
     </div>
   );

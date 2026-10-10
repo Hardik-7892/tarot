@@ -1,4 +1,4 @@
-# TAROT MILESTONES (TEMPORARY - delete before commit/merge)
+# TAROT MILESTONES (TEMPORARY)
 > Rule: complete MAX 1 milestone per session, then report and STOP. Update status below each time.
 > Purpose: keep context small across sessions. Read only the milestone you are working on.
 
@@ -38,7 +38,7 @@ Scope:
 Accept: link reproduces exact cards/orientations + question, invalid code handled, lint+build pass.
 Files: lib/share.js, components/ShareButtons.jsx, components/DeckFan.jsx
 
-## M4 - New spreads + spread index [pending]
+## M4 - New spreads + spread index [done]
 Depends: M1.
 Scope:
 - `lib/spreads.js`: `{id, title, description, labels[], verdict?}` for daily(1), past-present-future(3), love You/Them/Us(3), career Strength/Challenge/Advice(3), decision Option A/Option B/Counsel(3), celtic-cross(10 classic positions).
@@ -47,39 +47,39 @@ Scope:
 Accept: correct labels per spread, mobile OK, lint+build pass (check `out/spread/*`).
 Files: lib/spreads.js, app/spread/page.js, app/spread/[id]/page.js, components/DeckFan.jsx
 
-## M5 - Birth / Soul card calculator [pending]
+## M5 - Birth / Soul card calculator [done]
 Scope: `app/learn/birth-card/page.js` — date input -> digit-sum reduce to 1-22 -> map to Major, result card + share link. Client-only.
 Accept: correct reduction, links to card page, lint+build pass.
 Files: app/learn/birth-card/page.js, app/learn/page.js (link), app/page.js (optional link)
 
-## M6 - Quiz / flashcards [pending]
+## M6 - Quiz / flashcards [done]
 Scope: `app/learn/quiz/page.js` — show back, 4-option guess or type, flip via TarotCard, in-session score only.
 Accept: no persistence needed, keyboard accessible, lint+build pass.
 Files: app/learn/quiz/page.js, app/learn/page.js (link)
 
-## M7 - Cheat-sheet [pending]
+## M7 - Cheat-sheet [done]
 Scope: `app/learn/cheatsheet/page.js` — compact table all 78 (upright 1-line, rev, yes/no), print CSS.
 Accept: prints cleanly, lint+build pass.
 Files: app/learn/cheatsheet/page.js, app/learn/page.js (link)
 
-## M8a - Hand-written Love/Career: MAJORS (quality batch 1) [pending]
+## M8a - Hand-written Love/Career: MAJORS (quality batch 1) [done]
 Scope: `lib/domains-handwritten.js` keyed by id: `loveUpright, loveReversed, careerUpright, careerReversed` (1-2 sentences, ~140 chars each) for 22 majors = 88 snippets.
 Style: match essence/upright voice, second-person actionable; reversed = blocked/delayed/shadowed; no health/legal guarantees, no certainties.
 UI: `app/cards/[id]/page.js` Love + Career sections (hide section if entry missing — no filler).
 Accept: 88/88 present, no TODOs, spot-check 10 cards, lint+build pass.
 Files: lib/domains-handwritten.js, app/cards/[id]/page.js
 
-## M8b - Hand-written Love/Career: CUPS + PENTACLES [pending]
+## M8b - Hand-written Love/Career: CUPS + PENTACLES [done]
 Scope: same schema for 28 cards = 112 snippets. Depends: M8a pattern approved.
 Accept: same as M8a.
 Files: lib/domains-handwritten.js
 
-## M8c - Hand-written Love/Career: WANDS + SWORDS [pending]
+## M8c - Hand-written Love/Career: WANDS + SWORDS [done]
 Scope: same schema for 28 cards = 112 snippets.
 Accept: full 312/312 complete, lint+build pass.
 Files: lib/domains-handwritten.js
 
-## M9 - Explorer polish [pending]
+## M9 - Explorer polish [done]
 Scope: `app/cards/explorer.jsx` — add element filter (Fire/Water/Air/Earth), Yes/No/Unclear filter, Court/Pip filter, Random card button.
 Accept: filters compose with search, random navigates, lint+build pass.
 Files: app/cards/explorer.jsx
@@ -97,3 +97,11 @@ Files: public/manifest.webmanifest, public/icons/*, lib/sound.js, components/Dec
 - 2026-10-10: M1 done. IntentStep.jsx added; DeckFan gated + labels/spreadId/onComplete context; daily/spread/yes-no wired. lint + build pass (87 pages).
 - 2026-10-10: M2 done. lib/journal.js + lib/settings.js (localStorage, cap floor 200); JournalPanel (autosave toggle, save-once, note) in DeckFan reveal; /journal page (search, spread filter, export JSON/TXT/Copy, cap guard modal, 2-step clear); navbar + footer privacy. lint + build pass (88 pages).
 - 2026-10-10: M3 done. lib/share.js (base64url ?r= codec + text formatter); ShareButtons (Copy link/text, native share); DeckFan shared mode (reveal without shuffle, broken-link error, Draw your own, save shared to journal). lint + build pass (88 pages).
+- 2026-10-10: M4 done. lib/spreads.js (7 defs); /spread now index; /spread/[id] pages (ppf, love, career, decision, celtic-cross); /daily + /yes-no read from defs; navbar Spreads. Celtic Cross fits existing 12-back fan (10 picks, no re-deal needed). lint + build pass (93 pages).
+- 2026-10-10: M5 done. /learn/birth-card (digit-sum reduce to 1-22, 22=Fool, math shown, card link, shareable ?d= link, nothing stored); Tools section on /learn. lint + build pass (94 pages).
+- 2026-10-10: M6 done. /learn/quiz (choice + type modes, same-arcana/suit distractors, crypto-random, streak scoring in-session only, essence reveal, keyboard-native buttons); Tools grid link. lint + build pass (95 pages).
+- 2026-10-10: M7 done. /learn/cheatsheet (5 grouped tables, 78 rows verified in HTML, card links, Y/N coding, print CSS black-on-white + Print button); Tools grid link. lint + build pass (96 pages).
+- 2026-10-10: M8a done, revised for decorum. lib/domains-handwritten.js (22 majors x 4 = 88 snippets, 63-107 chars, zero hyphens or dashes in values per script check); In Love / In Career sections on card pages, hidden when entry missing. lint + build pass (96 pages).
+- 2026-10-10: M8b done. Cups + Pentacles added (28 x 4 = 112 snippets, same register, zero hyphens per script check; 50 entries / 200 snippets total). Verified in built HTML: two of cups and king of pentacles show sections, queen of swords still hides. lint + build pass (96 pages).
+- 2026-10-10: M8c done. Wands + Swords added (28 x 4 = 112 snippets, same register, zero hyphens per script check; 78 entries / 312 snippets total, 57-107 chars). Verified: three of swords and ten of wands show sections. lint + build pass (96 pages). All card pages now carry In Love / In Career.
+- 2026-10-10: M9 done. Explorer gains element (Fire/Water/Air/Earth), omen (Yes/No/Unclear), and kind (Court/Pip) filter groups composing with search + suit filter, a reset control, and a crypto random card jump. lint + build pass (96 pages).

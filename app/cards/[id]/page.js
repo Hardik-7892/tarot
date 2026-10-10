@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CARDS, byId } from "../../../lib/cards";
+import { getDomains } from "../../../lib/domains-handwritten";
 import TarotCard from "../../../components/TarotCard";
 import Gloss from "../../../components/Gloss";
 
@@ -85,6 +86,33 @@ export default async function CardDetail({ params }) {
           <p className="m-0 leading-relaxed">{card.reversed}</p>
         </article>
       </div>
+
+      {(() => {
+        const domains = getDomains(card.id);
+        if (!domains) return null;
+        return (
+          <div className="mb-8 grid gap-5 md:grid-cols-2">
+            <article aria-labelledby="love-title" className="rounded-[14px] border border-gold/25 bg-linear-to-b from-abyss2 to-abyss p-6">
+              <h2 id="love-title" className="mb-3 font-display text-2xl text-goldbright">
+                In Love
+              </h2>
+              <p className="mb-1 text-xs uppercase tracking-[0.25em] text-gold">Upright</p>
+              <p className="mb-4 leading-relaxed">{domains.loveUpright}</p>
+              <p className="mb-1 text-xs uppercase tracking-[0.25em] text-gold">Reversed</p>
+              <p className="m-0 leading-relaxed">{domains.loveReversed}</p>
+            </article>
+            <article aria-labelledby="career-title" className="rounded-[14px] border border-gold/25 bg-linear-to-b from-abyss2 to-abyss p-6">
+              <h2 id="career-title" className="mb-3 font-display text-2xl text-goldbright">
+                In Career
+              </h2>
+              <p className="mb-1 text-xs uppercase tracking-[0.25em] text-gold">Upright</p>
+              <p className="mb-4 leading-relaxed">{domains.careerUpright}</p>
+              <p className="mb-1 text-xs uppercase tracking-[0.25em] text-gold">Reversed</p>
+              <p className="m-0 leading-relaxed">{domains.careerReversed}</p>
+            </article>
+          </div>
+        );
+      })()}
 
       <article aria-labelledby="deep-title" className="mb-6 rounded-r-[14px] border-l-[3px] border-gold bg-linear-to-b from-abyss2 to-transparent p-7">
         <h2 id="deep-title" className="mb-3 font-display text-2xl text-goldbright">

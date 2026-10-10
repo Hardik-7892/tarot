@@ -1,5 +1,6 @@
 import DeckFan from "../../components/DeckFan";
 import Gloss from "../../components/Gloss";
+import { getSpread } from "../../lib/spreads";
 
 export const metadata = {
   title: "Daily Draw · Tarot",
@@ -7,6 +8,7 @@ export const metadata = {
 };
 
 export default function DailyPage() {
+  const spread = getSpread("daily");
   return (
     <div className="mx-auto max-w-[960px] px-6 py-12 text-center">
       <h1 className="mb-3 font-display text-[clamp(2.2rem,5vw,3.2rem)] text-parchment">
@@ -17,10 +19,10 @@ export default function DailyPage() {
         one card lying facedown. Then turn it over for its upright or reversed counsel.
       </p>
       <DeckFan
-        pickCount={1}
-        spreadId="daily"
-        title="Daily draw"
-        intentPrompt="Pause. What should today be about? Hold it lightly, then shuffle when ready."
+        pickCount={spread.pickCount}
+        spreadId={spread.id}
+        title={spread.title}
+        intentPrompt={spread.intentPrompt}
       />
     </div>
   );

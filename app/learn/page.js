@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Gloss from "../../components/Gloss";
 
 export const metadata = {
@@ -100,6 +101,44 @@ export default function LearnPage() {
             <p className="m-0 leading-relaxed">
               Roots, weather, trajectory. Read left to right as one sentence: where it began, where it stands, where it leans.
             </p>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="tools" className="mb-11 scroll-mt-20">
+        <h2 id="tools" className="mb-4 scroll-mt-20 font-display text-3xl text-goldbright">
+          Tools for Study
+        </h2>
+        <div className="grid gap-5 md:grid-cols-2">
+          <article className="rounded-[14px] border border-gold/25 bg-linear-to-b from-abyss2 to-abyss p-6">
+            <h3 className="mb-2 font-display text-xl text-parchment">Birth Card</h3>
+            <p className="m-0 mb-4 leading-relaxed">
+              Add your birthdate digits down to a single Major Arcana — the{" "}
+              <Gloss w="numinous" /> archetype you were born under.
+            </p>
+            <Link href="/learn/birth-card/" className="font-semibold text-moon hover:text-goldbright">
+              Find your card →
+            </Link>
+          </article>
+          <article className="rounded-[14px] border border-gold/25 bg-linear-to-b from-abyss2 to-abyss p-6">
+            <h3 className="mb-2 font-display text-xl text-parchment">Card Quiz</h3>
+            <p className="m-0 mb-4 leading-relaxed">
+              Flashcards for all 78: name the card from its back, multiple
+              choice or typed, with an in-session score.
+            </p>
+            <Link href="/learn/quiz/" className="font-semibold text-moon hover:text-goldbright">
+              Test yourself →
+            </Link>
+          </article>
+          <article className="rounded-[14px] border border-gold/25 bg-linear-to-b from-abyss2 to-abyss p-6">
+            <h3 className="mb-2 font-display text-xl text-parchment">Cheat-Sheet</h3>
+            <p className="m-0 mb-4 leading-relaxed">
+              All 78 cards on one printable page: upright, reversed, and yes/no
+              at a glance.
+            </p>
+            <Link href="/learn/cheatsheet/" className="font-semibold text-moon hover:text-goldbright">
+              Open the sheet →
+            </Link>
           </article>
         </div>
       </section>
